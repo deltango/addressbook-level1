@@ -181,7 +181,7 @@
 || ===================================================
 || Enter command: || [Command entered:  find 23912039120]
 || 
-|| 0 persons found!
+|| 1 persons found!
 || ===================================================
 || Enter command: || [Command entered:  find betsy]
 || 
