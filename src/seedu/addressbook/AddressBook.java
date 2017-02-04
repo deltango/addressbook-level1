@@ -143,6 +143,11 @@ public class AddressBook {
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
 
     private static final String DIVIDER = "===================================================";
+    
+    private static final String STRING_TYPE_S = "\\s+";
+    private static final String STRING_TYPE_D = "\\d+";
+    private static final String STRING_TYPE_SSS = "\\S+@\\S+\\.\\S+";
+    private static final String STRING_TYPE_WS = "(\\w|\\s)+";
 
     /*
      * We use a String array to store details of a single person. The constants
@@ -411,7 +416,7 @@ public class AddressBook {
      *         element is the arguments string
      */
     private static String[] splitCommandWordAndArgs(String rawUserInput) {
-        final String[] split = rawUserInput.trim().split("\\s+", 2);
+        final String[] split = rawUserInput.trim().split(STRING_TYPE_S, 2);
         return split.length == 2 ? split : new String[] { split[0], "" }; // else
                                                                           // case:
                                                                           // no
@@ -1164,7 +1169,7 @@ public class AddressBook {
      *            to be validated
      */
     private static boolean isPersonNameValid(String name) {
-        return name.matches("(\\w|\\s)+"); // name is nonempty mixture of
+        return name.matches(STRING_TYPE_WS); // name is nonempty mixture of
                                            // alphabets and whitespace
         // TODO: implement a more permissive validation
     }
@@ -1176,7 +1181,7 @@ public class AddressBook {
      *            to be validated
      */
     private static boolean isPersonPhoneValid(String phone) {
-        return phone.matches("\\d+"); // phone nonempty sequence of digits
+        return phone.matches(STRING_TYPE_D); // phone nonempty sequence of digits
         // TODO: implement a more permissive validation
     }
 
@@ -1188,7 +1193,7 @@ public class AddressBook {
      * @return whether arg is a valid person email
      */
     private static boolean isPersonEmailValid(String email) {
-        return email.matches("\\S+@\\S+\\.\\S+"); // email is
+        return email.matches(STRING_TYPE_SSS); // email is
                                                   // [non-whitespace]@[non-whitespace].[non-whitespace]
         // TODO: implement a more permissive validation
     }
@@ -1304,7 +1309,7 @@ public class AddressBook {
      * @return split by whitespace
      */
     private static ArrayList<String> splitByWhitespace(String toSplit) {
-        return new ArrayList<>(Arrays.asList(toSplit.trim().split("\\s+")));
+        return new ArrayList<>(Arrays.asList(toSplit.trim().split(STRING_TYPE_S)));
     }
 
 }
