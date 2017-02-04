@@ -1291,8 +1291,8 @@ public class AddressBook {
      *            Parameter sign to be removed
      * @return string without the sign
      */
-    private static String removePrefixSign(String s, String sign) {
-        return s.replace(sign, "");
+    private static String removePrefixSign(String rawString, String sign) {
+        return rawString.replace(sign, "");
     }
 
     /**
